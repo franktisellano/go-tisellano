@@ -1,4 +1,4 @@
-#go-tisellano
+# go-tisellano
 A flat file-based golink thing in Ruby.
 
 ## Notes
