@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>go.ft.io</title>
+  <title>go.tisellano.com</title>
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" type="text/css" href="/style.css" />
 </head>
@@ -10,7 +10,7 @@
   <a href="#main-content" class="skip">Skip to main content.</a>
   <header class="masthead">
     <nav>
-      <h1 class="blog-title"><a href="http://go.ft.io">go.ft.io</a></h1>
+      <h1 class="blog-title"><a href="http://go.tisellano.com">go.tisellano.com</a></h1>
       <ul>
       	<li><a href="/">Home</a></li>
       	<li><a href="/new">New</a></li>
@@ -33,5 +33,10 @@
   		</article>
   	</div>
   </main>
+  <footer class="blog-colophon">
+    <section class="about">
+      Bookmarklet: <a href="javascript:(function(){location.href='<%= request.url %>new?url='+encodeURIComponent(location.href);})();">Drag Me</a>
+  </section>
+  </footer>
 </body>
 </html>

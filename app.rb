@@ -2,7 +2,13 @@ require 'sinatra'
 require './link'
 
 get '/' do
+	start = Time.now
+
 	@links = Link.all
+
+	the_end = Time.now
+	puts "Retrieved in #{the_end - start} seconds."
+
 	erb :index
 end
 
@@ -35,8 +41,16 @@ post '/new' do
 end
 
 get '/:slug' do
+	start = Time.now
+
 	link = Link.find(params[:slug])
+
+	the_end = Time.now
+	puts "Retrieved in #{the_end - start} seconds."
+
 	if link
 		redirect to(link.url)
+	else
+		redirect to('/')
 	end
 end
