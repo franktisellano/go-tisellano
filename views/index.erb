@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>go.ft.io</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+<body>
+  <a href="#main-content" class="skip">Skip to main content.</a>
+  <header class="masthead">
+    <nav>
+      <h1 class="blog-title"><a href="http://go.ft.io">go.ft.io</a></h1>
+      <ul>
+      	<li><a href="/">Home</a></li>
+      	<li><a href="/new">New</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main role="main" id="main-content">
+  	<div id="links">
+  		<article class="single links-by-month">
+		    <ul>
+			<% @links.each do |l| %>
+				<li>
+					<span class="link-title">
+						<a class="link-link" href="<%= l.url %>"><%= l.name %></a>
+						<small class="link-source"><%= l.url %></small>
+					</span>
+				</li>
+			<% end %>
+			</ul>
+  		</article>
+  	</div>
+  </main>
+</body>
+</html>

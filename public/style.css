@@ -1,0 +1,578 @@
+/* Global */
+html, body {
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #151515;
+  background: #fefefe;
+}
+header, h1, h2, h3, h4, h5, h6 {
+  margin: 30px 0 10px 0;
+  padding: 0;
+  line-height: 125%;
+}
+h2 { font-size: 28px; }
+h3 { font-size: 24px; }
+h4 { font-size: 18px; }
+a {
+  color: blue;
+}
+a:visited,a:active {
+  color: purple;
+}
+code {
+  font-family: 'Menlo', monospace;
+  font-size: 0.9em;
+  padding: 1px;
+  border-radius: 2px;
+  border: 1px solid #e0e0e0;
+  background: #eee;
+}
+.skip {
+  position: fixed;
+  top: 0;
+  left: -9999px;
+}
+.pagination {
+  width: 100%;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.pagination a, a.read-article {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background: #eee;
+  transition: background 0.5s;
+  text-align: center;
+  text-decoration: none;
+}
+.pagination a,
+.pagination a:visited,
+.pagination a:active,
+a.read-article,
+a.read-article:visited,
+a.read-article:active {
+  color: #515151;
+}
+.pagination a:hover,
+a.read-article:hover {
+  background: #ddd;
+}
+.pagination-older {
+  margin-right: 10px;
+}
+.pagination-newer {
+  right: 0;
+}
+
+/* Form */
+.form-field {
+  margin-bottom: 10px;
+}
+label {
+  display: inline-block;
+  width: 80px;
+}
+form, form input, form button {
+  font-size: 17px;
+}
+form input, form button {
+  display: inline-block;
+}
+.response {
+  padding: 20px 0;
+  font-size: 16px;
+  color: gray;
+}
+
+/* Header and Footer */
+main, footer.blog-colophon > section, .about-container {
+  width: 94%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+main {
+  display: block; /* Necessary for IE 11 */
+}
+header.masthead, footer.blog-colophon {
+  box-sizing: border-box;
+  width: 94%;
+  margin: auto;
+
+  color: #111;
+}
+header.masthead {
+  position: relative;
+  padding: 20px 0;
+  margin-top: 0;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #efefef;
+}
+header.masthead nav {
+  margin: 0;
+}
+nav ul {
+  float: right;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: -20px;
+}
+nav li {
+  display: inline-block;
+  padding: 25px 0 0 20px;
+}
+nav li a, nav li a:visited, nav li a:active {
+  text-decoration: none;
+  font-weight: 500;
+  color: #111;
+}
+nav li a:hover {
+  padding-bottom: 3px;
+  border-bottom: 4px solid blue;
+}
+nav li a.twitter:hover {
+  border-bottom: 4px solid #55acee;
+}
+.blog-title {
+  display: inline;
+  width: 243px;
+  margin: 0;
+  line-height: 100%;
+  font-size: 24px;
+}
+.blog-title a {
+  display: inline;
+  width: 100%;
+  height: 100%;
+
+  text-decoration: none;
+  font-weight: 500;
+  color: blue;
+}
+.blog-description {
+  display: inline;
+  font-size: 16px;
+  font-weight: normal;
+  color: #aaa;
+}
+footer.blog-colophon {
+  padding: 20px 0 50px 0;
+  border-top: 1px solid #efefef;
+}
+.headshot {
+  float: right;
+  width: 120px;
+  height: 120px;
+  margin: 0 0 0 10px;
+  border-radius: 60px;
+  background-image: url(../headshot-new-square-small-compressed.jpeg);
+  background-size: 120px 120px;
+  background-repeat: no-repeat;
+}
+.copyright {
+  text-align: center;
+  color: #aaa;
+}
+
+/* Article */
+.article-header {
+  font-size: 36px;
+  line-height: 100%;
+}
+.article-header a, .article-header a:visited {
+  color: #111;
+  text-decoration: none;
+}
+article header {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+article header:after {
+  display: block;
+  position: relative;
+  width: 40px;
+  top: 20px;
+  content: '';
+  border-bottom: 4px solid blue;
+}
+article header time {
+  display: block;
+  color: #aaa;
+}
+article:after { /* article border and spacing */
+  content: '';
+  display: block;
+  width: 50%;
+  margin: 40px auto 100px;
+  border-bottom: 1px solid #efefef;
+}
+article.single {
+  margin-bottom: 60px; /* A litle more breathing room than the standard 40 */
+}
+article.single:after {
+  display: none;
+}
+@keyframes waver {
+  0% {transform: rotate(-2deg);}
+  50% {transform: rotate(4deg);}
+  100% {transform: rotate(-2deg);}
+}
+.wave {
+  position: relative;
+  width: 300px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 120px 10px 20px;
+  margin-top: 40px;
+  background: #efefef;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.wave.wave-given, .wave:hover {
+  background: #e0e0e0;
+}
+.wave:hover .wave-action {
+  animation: waver 0.2s alternate 2;
+  transform-origin: 50% 90%;
+  animation-timing-function: ease-in-out;
+}
+.wave p {
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+.wave-action {
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: -24px;
+  font-size: 60px;
+  border-radius: 500px;
+}
+.waves-count {
+  color: blue;
+  font-weight: bold;
+}
+article iframe {
+  width: 100%;
+}
+table {
+  margin: 20px 0;
+  border: 1px solid #e0e0e0;
+  border-collapse: collapse;
+}
+td, th {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* Article Preview */
+.article-preview {
+  margin-bottom: 60px;
+}
+.article-preview .article-header {
+  font-size: 24px;
+}
+.article-preview:after { /* article border and spacing */
+  display: none;
+}
+.read-article {
+  margin-top: 10px;
+}
+
+/* Article Text */
+blockquote {
+  margin: 20px 0;
+  padding: 10px 0 10px 20px;
+  border-left: 4px solid blue;
+}
+p, ul, ol {
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+article ol, article ul {
+  padding-left: 40px;
+}
+sup {
+  line-height: 0;
+}
+.caption {
+  width: 80%;
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+  margin: -18px auto 20px;
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Media */
+article img, article video {
+  width: 100%;
+  margin: 10px auto;
+}
+
+/* Footnotes */
+.footnotes {
+  margin-top: 40px;
+  border-top: 1px solid #efefef;
+}
+.footnotes hr {
+  display: none;
+}
+.footnotes ol {
+  margin-top: 10px;
+  padding-left: 0;
+  list-style-position: inside;
+}
+.footnotes li p {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+.footnotes a {
+  padding-left: 4px;
+}
+.note-reference {
+  text-decoration: none;
+}
+.back-to-note-reference {
+  text-decoration: none;
+}
+.back-to-note-reference:visited {
+  color: blue;
+}
+
+/* Home Page */
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home header {
+  padding: 20px 0;
+  border-top: 1px solid #efefef;
+}
+.home header nav ul {
+  text-align: center;
+  margin: 0; padding: 0;
+  float: none;
+}
+.home nav li {
+  padding: 0;
+  margin: 0 10px;
+}
+.about-container {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.about-container .headshot {
+  float: none;
+  width: 180px;
+  height: 180px;
+  margin: 20px auto 40px;
+  border-radius: 90px;
+  background-size: 180px;
+}
+.about .lead {
+  display: none;
+}
+.rss-subscribe {
+  display: none;
+}
+.about-blog .rss-subscribe {
+  display: inline;
+}
+.about-container .lead {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.profile {
+  padding-bottom: 110px;
+}
+.profile p {
+  float: left;
+  width: 48%;
+}
+.profile p:first-of-type {
+  margin-right: 4%;
+}
+.homepage-cta {
+  margin: 20px 0;
+}
+.links-temp p {
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+article.links-by-month ul {
+  padding-left: 0;
+  list-style: none;
+}
+article.links-by-month li {
+  margin-bottom: 16px;
+}
+article.links-by-month.domains li {
+  margin-bottom: 4px;
+}
+a.link-link {
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px dotted #ccc;
+}
+a.link-link:hover {
+  color: blue;
+  border-bottom: 1px solid blue;
+}
+.link-comments {
+  display: block;
+  color: #333;
+}
+.link-source {
+  color: #aaa;
+}
+.domains-description {
+  line-height: 1.5;
+}
+/*.microblog-post {
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 24px;
+}
+.microblog-text {
+  padding: 12px;
+}
+.microblog-text p {
+  margin: 0;
+}
+.microblog-time {
+  padding: 12px;
+  background: #eee;
+  border-top: 1px solid #e0e0e0;
+}*/
+
+
+::-moz-selection {
+ background-color: rgba(255, 255, 0, 0.75);
+}
+/* Works in Safari */
+::selection {
+  background-color: rgba(255, 255, 0, 0.75);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #151515;
+
+  margin: 80px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  body {
+    color: #ddd;
+    background: #151515;
+  }
+  a,
+  a:visited,
+  a:active,
+  nav li a,
+  nav li a:visited,
+  nav li a:active,
+  .blog-title a,
+  .article-header a,
+  .article-header a:visited,
+  a.link-link,
+  a.link-link:visited {
+    color: #fff;
+  }
+  a.read-article,
+  a.read-article:visited,
+  a.read-article:active,
+  .wave, code {
+    color: #fff;
+    background: #333;
+    border-color: #333;
+  }
+  .wave.wave-given, .wave:hover {
+    background: #555;
+  }
+  .link-comments, footer.blog-colophon {
+    color: #ddd;
+  }
+  header.masthead {
+    border-bottom: 1px solid #333;
+  }
+  .home header, .footnotes, footer.blog-colophon {
+    border-top: 1px solid #333;
+  }
+  footer a.blog-colophon {
+    color: #fff;
+  }
+}
+
+@media only screen
+       and (max-width: 760px) { 
+  header.masthead nav {
+    text-align: left;
+  }
+  nav ul {
+    float: none;
+    margin: 10px 0 0 0;
+  }
+  nav li {
+    padding: 0 20px 0 0;
+  }
+  .blog-description {
+    display: block;
+  }
+  .about-container p {
+    width: auto;
+    margin-left: 0;
+    float: none;
+  }
+  .links-temp {
+    margin-top: 20px;
+  }
+  .profile {
+    padding-bottom: 10px;
+  }
+  .wave {
+    width: auto;
+    padding: 10px 0 10px 20px;
+  }
+  .wave-action {
+    right: 0;
+  }
+}
